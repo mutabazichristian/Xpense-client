@@ -6,7 +6,7 @@ import ViewExpensesPage from '../Pages/ViewExpensePage';
 import StatisticsPage from '../Pages/StatisticsPage';
 import FeedbackPage from '../Pages/FeedbackPage';
 
-const HomePage = () => {
+const HomePage = (props) => {
     const [expenseTitle, setExpenseTitle] = useState('untitled');
     const [expenseAmount, setExpenseAmount] = useState(0);
     const [expenseCategory, setExpenseCategory] = useState('');
@@ -14,12 +14,15 @@ const HomePage = () => {
     const [expenseImage, setExpenseImage] = useState(null);
     const [expenseDescription, setExpenseDescription] = useState('');
     const [expenses, setExpenses] = useState([]);
-
+    const { userType, setUserType } = props;
 
     return (
         <div>
             <Navbar />
-            <SummaryPage />
+            <SummaryPage
+                userType={userType}
+                setUserType={setUserType}
+            />
             <NewExpensePage
                 expenseTitle={expenseTitle} expenseAmount={expenseAmount} expenseCategory={expenseCategory} expenseDate={expenseDate} expenseImage={expenseImage}
                 setExpenseAmount={setExpenseAmount} setExpenseTitle={setExpenseTitle} setExpenseCategory={setExpenseCategory}

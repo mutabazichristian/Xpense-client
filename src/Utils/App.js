@@ -17,14 +17,14 @@ function App() {
       setUserType(localStorage.getItem('userType'));
       console.log('usertype', userType)
     }
-  })
+  }, userType)
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<ProtectedRoutes />}>
-          {userType === 'user' && <Route path='*' element={<HomePage />} />}
-          {userType === 'systemadmin' && <Route path="*" element={<SystemAdminPage />} />}
-          {userType === 'useradmin' && <Route path="*" element={<UsersAdminPage />} />}
+          {userType === 'user' && <Route path='*' element={<HomePage userType={userType} setUserType={setUserType} />} />}
+          {userType === 'systemadmin' && <Route path="*" element={<SystemAdminPage userType={userType} setUserType={setUserTypes} />} />}
+          {userType === 'useradmin' && <Route path="*" element={<UsersAdminPage userType={userTypes} setUserType={setUserTypes} />} />}
         </Route>
         {userType === '' && <>
           <Route path='/login' element={<LoginPage email={email} setEmail={setEmail} setUserType={setUserType} />} />
