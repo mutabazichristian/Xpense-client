@@ -5,11 +5,9 @@
 .env
 webpack.config.js
 
-#production
-/build
 
 #automatic add,commit ,push
-./src/pusher
+src/pusher.sh
 
 #misc
 .DS_Store
