@@ -2,7 +2,7 @@ import axios from 'axios';
 import Cookie from 'js-cookie';
 
 const instance = axios.create({
-  baseURL: 'https://angry-bat-ring.cyclic.app/',
+  baseURL: 'https://clean-cardigan-ant.cyclic.app/',
   // baseURL: 'http://localhost:8080'
 })
 
