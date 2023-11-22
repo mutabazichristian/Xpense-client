@@ -16,7 +16,7 @@ function Navbar(props) {
             const cookieName = cookieSections[0].trim();
             document.cookie = `${cookieName}=;expires=Thu,01 Jan 1970 00:00:00 UTC; path=/;`;
         })
-        localStorage.removeItem('userType');
+        setUserType('');
         navigate('/');  
     }
 
