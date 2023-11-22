@@ -23,8 +23,8 @@ function App() {
       <Routes>
         <Route element={<ProtectedRoutes />}>
           {userType === 'user' && <Route path='*' element={<HomePage userType={userType} setUserType={setUserType} />} />}
-          {userType === 'systemadmin' && <Route path="*" element={<SystemAdminPage userType={userType} setUserType={setUserTypes} />} />}
-          {userType === 'useradmin' && <Route path="*" element={<UsersAdminPage userType={userTypes} setUserType={setUserTypes} />} />}
+          {userType === 'systemadmin' && <Route path="*" element={<SystemAdminPage userType={userType} setUserType={setUserType} />} />}
+          {userType === 'useradmin' && <Route path="*" element={<UsersAdminPage userType={userType} setUserType={setUserType} />} />}
         </Route>
         {userType === '' && <>
           <Route path='/login' element={<LoginPage email={email} setEmail={setEmail} setUserType={setUserType} />} />
