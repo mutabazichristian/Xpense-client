@@ -17,7 +17,7 @@ function App() {
       setUserType(localStorage.getItem('userType'));
       console.log('usertype', userType)
     }
-  }, userType)
+  }, [userType])
   return (
     <BrowserRouter>
       <Routes>
