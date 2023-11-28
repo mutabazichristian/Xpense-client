@@ -13,10 +13,10 @@ function App() {
   const [email, setEmail] = useState('');
   const [userType, setUserType] = useState('');
   useEffect(() => {
-    if (!!localStorage.getItem('userType')) {
-      setUserType(localStorage.getItem('userType'));
-      console.log('usertype', userType)
-    }
+    // if (!!localStorage.getItem('userType')) {
+    //   setUserType(localStorage.getItem('userType'));
+    console.log('usertype', userType)
+
   }, [userType])
   return (
     <BrowserRouter>
@@ -27,8 +27,8 @@ function App() {
           {userType === 'useradmin' && <Route path="*" element={<UsersAdminPage userType={userType} setUserType={setUserType} />} />}
         </Route>
         {userType === '' && <>
-        
-          <Route path='*' element={<LoginPage email={email} setEmail={setEmail} setUserType={setUserType} />} />
+
+          <Route path='/' element={<LoginPage email={email} setEmail={setEmail} setUserType={setUserType} />} />
           <Route path='/login' element={<LoginPage email={email} setEmail={setEmail} setUserType={setUserType} />} />
           <Route path='/signup' element={<SignUpPage />} />
           <Route path='/create' element={<Create />} />
