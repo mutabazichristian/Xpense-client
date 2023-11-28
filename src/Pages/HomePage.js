@@ -18,7 +18,7 @@ const HomePage = (props) => {
 
     return (
         <div>
-            <Navbar />
+            <Navbar userType={userType} setUserType={setUserType} />
             <SummaryPage
                 userType={userType}
                 setUserType={setUserType}
