@@ -9,7 +9,7 @@ function Create() {
     const [repeatPassword, setRepeatPassword] = useState('');
     const handleSubmit = (event) => {
         event.preventDefault();
-        instance.post('/signup/systemadmin', { username, email, password, repeatPassword })
+        instance.post('/signup/systemadmin', { username, email, password })
         .then((res)=>{
             console.log('response, creating system admin', res);
         })
