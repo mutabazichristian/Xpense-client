@@ -9,7 +9,7 @@ function Login(props) {
     const { email, setEmail, setUserType } = props;
     const [isWrongCredentials, setIsWrongCredentials] = useState(false);
     const [waiting, setWaiting] = useState(false);
-    const [problem, setProblem] = useState('');
+    const [message, setMessage] = useState('');
     async function handleLogin(event) {
         event.preventDefault();
         setWaiting(true);
@@ -25,7 +25,7 @@ function Login(props) {
                     // localStorage.setItem("userType", res.data.userType);
                     // navigate("/user");
                 } if (!res.success) {
-                    setProblem(res.status)
+                    setMessage(res.message)
                     setIsWrongCredentials(true);
                 }
                 setWaiting(false);
@@ -49,7 +49,7 @@ function Login(props) {
         if (waiting == true) {
             console.log('Waiting for a response');;
         }
-    }, [waiting, problem])
+    }, [waiting, message])
 
     return (
         <div>
@@ -69,7 +69,7 @@ function Login(props) {
                 <button type="submit">Login</button>
                 {waiting && (<p style={{ color: "black" }}> Waiting for response</p>)}
                 {isWrongCredentials && (
-                    <p style={{ color: "red" }}>Please Enter the right credentials!! {problem}</p>
+                    <p style={{ color: "red" }}>Please Enter the right credentials!! {message}</p>
                 )}
                 <p>
                     No account?
