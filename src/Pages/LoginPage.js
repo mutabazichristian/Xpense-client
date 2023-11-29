@@ -12,11 +12,12 @@ function Login(props) {
         await instance
             .post("/login", { email, password })
             .then((res) => {
-                console.log("response from server", res);
-                console.log("user type", res.data.userType);
-                setUserType(res.data.userType);
-                localStorage.setItem("userType", res.data.userType);
-                navigate("/user");
+                console.log(res.data);
+                // console.log("response from server", res);
+                // console.log("user type", res.data.userType);
+                // setUserType(res.data.userType);
+                // localStorage.setItem("userType", res.data.userType);
+                // navigate("/user");
             })
             .catch((err) => {
                 console.log("error from server", err);
