@@ -9,7 +9,7 @@ function Login(props) {
     const { email, setEmail, setUserType } = props;
     const [isWrongCredentials, setIsWrongCredentials] = useState(false);
     const [waiting, setWaiting] = useState(false);
-    var problem;
+    const [problem, setProblem] = useState('');
     async function handleLogin(event) {
         event.preventDefault();
         setWaiting(true);
@@ -18,14 +18,14 @@ function Login(props) {
             .then((res) => {
                 console.log(res.data);
                 if (res.success) {
-                    
+
                     // console.log("response from server", res);
                     // console.log("user type", res.data.userType);
                     // setUserType(res.data.userType);
                     // localStorage.setItem("userType", res.data.userType);
                     // navigate("/user");
-                } if (!res.success){
-                    problem = res.status;
+                } if (!res.success) {
+                    setProblem(res.status)
                     setIsWrongCredentials(true);
                 }
                 setWaiting(false);
@@ -49,7 +49,7 @@ function Login(props) {
         if (waiting == true) {
             console.log('Waiting for a response');;
         }
-    }, [waiting])
+    }, [waiting, problem])
 
     return (
         <div>
