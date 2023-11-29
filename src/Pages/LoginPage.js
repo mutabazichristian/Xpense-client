@@ -9,6 +9,7 @@ function Login(props) {
     const { email, setEmail, setUserType } = props;
     const [isWrongCredentials, setIsWrongCredentials] = useState(false);
     const [waiting, setWaiting] = useState(false);
+    var problem;
     async function handleLogin(event) {
         event.preventDefault();
         setWaiting(true);
@@ -16,6 +17,7 @@ function Login(props) {
             .post("/login", { email, password })
             .then((res) => {
                 console.log(res.data);
+                problem = res.data.status;
                 // console.log("response from server", res);
                 // console.log("user type", res.data.userType);
                 // setUserType(res.data.userType);
@@ -62,7 +64,7 @@ function Login(props) {
                 <button type="submit">Login</button>
                 {waiting && (<p style={{ color: "black" }}> Waiting for response</p>)}
                 {isWrongCredentials && (
-                    <p style={{ color: "red" }}>Please Enter the right credentials!!</p>
+                    <p style={{ color: "red" }}>Please Enter the right credentials!! { problem }</p>
                 )}
                 <p>
                     No account?
