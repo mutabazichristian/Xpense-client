@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import UserAdminsView from '../Components/UserAdminsView';
 import { useNavigate } from 'react-router-dom';
+import instance from '../API';
 
 function SystemAdminPage(props) {
     //new user admin data
@@ -31,6 +32,16 @@ function SystemAdminPage(props) {
         if (password == repeatPassword) {
             console.log('tryna create a new admin huh?');
             console.log('collected values are', username, password, email);
+            instance
+                .post('/useradmin', { username, password, email })
+                .then((res) => {
+                    console.log('response from server', res.data);
+                })
+                .catch((error) => {
+                    console.log('this is the error from the server', error);
+                })
+
+
         } if (password != repeatPassword) {
             alert('Passwords do not match! Please make sure they do.');
         }
