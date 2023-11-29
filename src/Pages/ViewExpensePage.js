@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ExpensesViewer from "../Components/ExpensesViewer";
 import searchIcon from "../Assets/icon-search.svg"
 import axios from "axios";
+import instance from "../API/index";
 
 function ViewExpenses(props) {
     const { expenseTitle, expenseAmount, expenseCategory, expenseDate, expenseImage,
@@ -9,7 +10,7 @@ function ViewExpenses(props) {
         expenseDescription, setExpenseDescription, expenses, setExpenses } = props;
 
     const refreshExpenses = () => {
-        axios.get('http://localhost:8080/expenses')
+        instance    .get('http://localhost:8080/expenses')
             .then(res => {
                 if (res.data != []) {
                     setExpenses(res.data)
@@ -21,7 +22,7 @@ function ViewExpenses(props) {
 
     }
     const deleteHandler = (id) => {
-        console.log('Id for deletion',id);
+        console.log('Id for deletion', id);
         axios.delete('http://localhost:8080/expenses', { id })
             .then(res => {
                 console.log(res);
