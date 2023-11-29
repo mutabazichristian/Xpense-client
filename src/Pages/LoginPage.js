@@ -60,7 +60,7 @@ function Login(props) {
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <button type="submit">Login</button>
-                {waiting && (<p> Waiting for response</p>)}
+                {waiting && (<p style={{ color: "black" }}> Waiting for response</p>)}
                 {isWrongCredentials && (
                     <p style={{ color: "red" }}>Please Enter the right credentials!!</p>
                 )}
