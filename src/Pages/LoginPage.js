@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import instance from "../API";
 import { useNavigate } from "react-router-dom";
 import { wait } from "@testing-library/user-event/dist/utils";
@@ -8,10 +8,10 @@ function Login(props) {
     const [password, setPassword] = useState("");
     const { email, setEmail, setUserType } = props;
     const [isWrongCredentials, setIsWrongCredentials] = useState(false);
-    var waiting = false;
+    const [waiting, setWaiting] = useState(false);
     async function handleLogin(event) {
         event.preventDefault();
-        waiting = true;
+        setWaiting(true);
         await instance
             .post("/login", { email, password })
             .then((res) => {
@@ -21,14 +21,14 @@ function Login(props) {
                 // setUserType(res.data.userType);
                 // localStorage.setItem("userType", res.data.userType);
                 // navigate("/user");
-                waiting = false;
+                setWaiting(false);
             })
             .catch((error) => {
                 console.log("error from server", error);
                 if (error.code === "ERR_BAD_REQUEST") {
                     setIsWrongCredentials(true);
                 }
-                waiting = false
+                setWaiting(false);
             });
     }
     function navigateToSignup() {
@@ -37,6 +37,12 @@ function Login(props) {
     function navigateToCreate() {
         navigate('/create')
     }
+
+    useEffect(() => {
+        if (waiting == true) {
+            console.log('Waiting for a response');;
+        }
+    }, [waiting])
 
     return (
         <div>
@@ -54,7 +60,7 @@ function Login(props) {
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <button type="submit">Login</button>
-                {waiting && ( <p> Waiting for response</p>)}
+                {waiting && (<p> Waiting for response</p>)}
                 {isWrongCredentials && (
                     <p style={{ color: "red" }}>Please Enter the right credentials!!</p>
                 )}
