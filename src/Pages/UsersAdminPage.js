@@ -1,4 +1,5 @@
-import React, { useNavigate } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import UsersView from '../Components/UsersView';
 
 function UsersAdminPage(props) {

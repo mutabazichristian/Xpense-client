@@ -1,8 +1,10 @@
 import React from 'react';
 import UserAdminsView from '../Components/UserAdminsView';
+import { useNavigate } from 'react-router-dom';
 
 function SystemAdminPage(props) {
     const { setUserType } = props;
+    const navigate = useNavigate();
     var userAdmins = [];
     console.log(userAdmins.length)
 
