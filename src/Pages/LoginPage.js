@@ -17,14 +17,15 @@ function Login(props) {
             .post("/login", { email, password })
             .then((res) => {
                 console.log(res.data);
-                if (res.success) {
+                if (res.data.success) {
+                    setIsWrongCredentials(false);
 
                     console.log("response from server", res);
                     console.log("user type", res.data.userType);
                     setUserType(res.data.userType);
                     localStorage.setItem("userType", res.data.userType);
                     navigate("/user");
-                } if (!res.success) {
+                } if (!res.data.success) {
                     setMessage(res.data.message)
                     setIsWrongCredentials(true);
                 }
