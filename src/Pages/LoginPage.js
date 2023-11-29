@@ -17,12 +17,17 @@ function Login(props) {
             .post("/login", { email, password })
             .then((res) => {
                 console.log(res.data);
-                problem = res.status;
-                // console.log("response from server", res);
-                // console.log("user type", res.data.userType);
-                // setUserType(res.data.userType);
-                // localStorage.setItem("userType", res.data.userType);
-                // navigate("/user");
+                if (res.success) {
+                    
+                    // console.log("response from server", res);
+                    // console.log("user type", res.data.userType);
+                    // setUserType(res.data.userType);
+                    // localStorage.setItem("userType", res.data.userType);
+                    // navigate("/user");
+                } if (!res.success){
+                    problem = res.status;
+                    setIsWrongCredentials(true);
+                }
                 setWaiting(false);
             })
             .catch((error) => {
