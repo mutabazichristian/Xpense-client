@@ -11,7 +11,7 @@ const SignUpPage = () => {
     const [repeatPassword, setRepeatPassword] = useState('');
     const [maxExpense, setMaxExpense] = useState();
     async function handleSingup(event,) {
-        if (password != repeatPassword) {
+        if (password !== repeatPassword) {
             alert('password does not match');
         }
         console.log(firstName, otherName, email, password, repeatPassword, maxExpense)

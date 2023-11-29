@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import instance from "../API";
 import { useNavigate } from "react-router-dom";
+import { wait } from "@testing-library/user-event/dist/utils";
 
 function Login(props) {
     const navigate = useNavigate();
     const [password, setPassword] = useState("");
     const { email, setEmail, setUserType } = props;
     const [isWrongCredentials, setIsWrongCredentials] = useState(false);
+    var waiting = false;
     async function handleLogin(event) {
         event.preventDefault();
+        waiting = true;
         await instance
             .post("/login", { email, password })
             .then((res) => {
@@ -18,18 +21,20 @@ function Login(props) {
                 // setUserType(res.data.userType);
                 // localStorage.setItem("userType", res.data.userType);
                 // navigate("/user");
+                waiting = false;
             })
-            .catch((err) => {
-                console.log("error from server", err);
-                if (err.code === "ERR_BAD_REQUEST") {
+            .catch((error) => {
+                console.log("error from server", error);
+                if (error.code === "ERR_BAD_REQUEST") {
                     setIsWrongCredentials(true);
                 }
+                waiting = false
             });
     }
     function navigateToSignup() {
         navigate("/signup");
     }
-    function navigateToCreate(){
+    function navigateToCreate() {
         navigate('/create')
     }
 
@@ -48,7 +53,8 @@ function Login(props) {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <button type="submit">Submit</button>
+                <button type="submit">Login</button>
+                {waiting && ( <p> Waiting for response</p>)}
                 {isWrongCredentials && (
                     <p style={{ color: "red" }}>Please Enter the right credentials!!</p>
                 )}
