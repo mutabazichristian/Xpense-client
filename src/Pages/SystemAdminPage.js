@@ -4,10 +4,10 @@ import { useNavigate } from 'react-router-dom';
 
 function SystemAdminPage(props) {
     //new user admin data
-    const [username, setUsername] = useState;
-    const [password, setPassword] = useState;
-    const [repeatPassword, setRepeatPassword] = useState;
-    const [email, setEmail] = useState;
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [repeatPassword, setRepeatPassword] = useState('');
+    const [email, setEmail] = useState('');
 
     const { setUserType } = props;
     const navigate = useNavigate();
@@ -30,7 +30,7 @@ function SystemAdminPage(props) {
         event.preventDefault();
         if (password == repeatPassword) {
             console.log('tryna create a new admin huh?');
-            console.log('collected values are', username, password,);
+            console.log('collected values are', username, password, email);
         } if (password != repeatPassword) {
             alert('Passwords do not match! Please make sure they do.');
         }
