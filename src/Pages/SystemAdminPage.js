@@ -59,7 +59,7 @@ function SystemAdminPage(props) {
                     </tr>
                     <tr>
                         <td><label htmlFor="">Email</label></td>
-                        <td><input type="text" name='email' onCanPlay={e => { setEmail(e.target.value) }} /></td>
+                        <td><input type="text" name='email' onChange={e => { setEmail(e.target.value) }} /></td>
                     </tr>
                     <tr>
                         <td><label htmlFor="">Password</label></td>
