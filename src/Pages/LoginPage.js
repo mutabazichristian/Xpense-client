@@ -17,7 +17,7 @@ function Login(props) {
             .post("/login", { email, password })
             .then((res) => {
                 console.log(res.data);
-                problem = res.data.status;
+                problem = res.status;
                 // console.log("response from server", res);
                 // console.log("user type", res.data.userType);
                 // setUserType(res.data.userType);
@@ -64,7 +64,7 @@ function Login(props) {
                 <button type="submit">Login</button>
                 {waiting && (<p style={{ color: "black" }}> Waiting for response</p>)}
                 {isWrongCredentials && (
-                    <p style={{ color: "red" }}>Please Enter the right credentials!! { problem }</p>
+                    <p style={{ color: "red" }}>Please Enter the right credentials!! {problem}</p>
                 )}
                 <p>
                     No account?
