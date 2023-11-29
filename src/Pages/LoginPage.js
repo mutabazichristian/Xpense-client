@@ -24,7 +24,7 @@ function Login(props) {
                     console.log("user type", res.data.userType);
                     setUserType(res.data.userType);
                     localStorage.setItem("userType", res.data.userType);
-                    navigate("/user");
+                    navigate("/");
                 } if (!res.data.success) {
                     setMessage(res.data.message)
                     setIsWrongCredentials(true);

@@ -28,7 +28,13 @@ function SystemAdminPage(props) {
 
     const handleCreateNewUserAdmin = async (event) => {
         event.preventDefault();
-        console.log('tryna create a new admin huh?');
+        if (password == repeatPassword) {
+            console.log('tryna create a new admin huh?');
+            console.log('collected values are', username, password,);
+        } if (password != repeatPassword) {
+            alert('Passwords do not match! Please make sure they do.');
+        }
+
     }
     return (
         <div>
