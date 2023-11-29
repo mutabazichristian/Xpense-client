@@ -25,7 +25,7 @@ function Login(props) {
                     // localStorage.setItem("userType", res.data.userType);
                     // navigate("/user");
                 } if (!res.success) {
-                    setMessage(res.message)
+                    setMessage(res.data.message)
                     setIsWrongCredentials(true);
                 }
                 setWaiting(false);
