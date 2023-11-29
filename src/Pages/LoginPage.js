@@ -19,11 +19,11 @@ function Login(props) {
                 console.log(res.data);
                 if (res.success) {
 
-                    // console.log("response from server", res);
-                    // console.log("user type", res.data.userType);
-                    // setUserType(res.data.userType);
-                    // localStorage.setItem("userType", res.data.userType);
-                    // navigate("/user");
+                    console.log("response from server", res);
+                    console.log("user type", res.data.userType);
+                    setUserType(res.data.userType);
+                    localStorage.setItem("userType", res.data.userType);
+                    navigate("/user");
                 } if (!res.success) {
                     setMessage(res.data.message)
                     setIsWrongCredentials(true);
