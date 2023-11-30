@@ -2,14 +2,10 @@ import React, { useState } from 'react';
 import UserAdminsView from '../Components/UserAdminsView';
 import { useNavigate } from 'react-router-dom';
 import instance from '../API';
+import NewUserAdmin from '../Components/NewUserAdmin';
 
 function SystemAdminPage(props) {
     //new user admin data
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [repeatPassword, setRepeatPassword] = useState('');
-    const [email, setEmail] = useState('');
-
     const { setUserType } = props;
     const navigate = useNavigate();
     var userAdmins = [];
@@ -27,24 +23,9 @@ function SystemAdminPage(props) {
         navigate('/');
     }
 
-    const handleCreateNewUserAdmin = async (event) => {
-        event.preventDefault();
-        if (password == repeatPassword) {
-            console.log('tryna create a new admin huh?');
-            console.log('collected values are', username, password, email);
-            instance
-                .post('/useradmin', { username, password, email })
-                .then((res) => {
-                    console.log('response from server', res.data);
-                })
-                .catch((error) => {
-                    console.log('this is the error from the server', error);
-                })
 
 
-        } if (password != repeatPassword) {
-            alert('Passwords do not match! Please make sure they do.');
-        }
+    const handleCreateSystemAdmin = async (event) => {
 
     }
     return (
@@ -62,7 +43,9 @@ function SystemAdminPage(props) {
                 }
             </ul>
             <h1>Create New User Admin</h1>
-            <form onSubmit={handleCreateNewUserAdmin}>
+            <NewUserAdmin />
+            <h1>Create New System Admin</h1>
+            <form onSubmit={handleCreateSystemAdmin}>
                 <table>
                     <tr>
                         <td><label htmlFor="">Username</label></td>
@@ -85,11 +68,6 @@ function SystemAdminPage(props) {
                     </tr>
                 </table>
             </form>
-            <h1>Create New System Admin</h1>
-            <form action="">
-
-            </form>
-
         </div>
     );
 }
