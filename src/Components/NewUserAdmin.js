@@ -15,11 +15,13 @@ function NewUserAdmin() {
             console.log('tryna create a new admin huh?');
             console.log('collected values are', username, password, email);
             setWaiting(true)
+            setMessage(null)
             instance
                 .post('/signup/useradmin', { username, password, email })
                 .then((res) => {
                     console.log('response from server', res.data);
                     setWaiting(false);
+                    setMessage(res.data.message);
                 })
                 .catch((error) => {
                     console.log('this is the error from the server', error);
