@@ -11,26 +11,32 @@ function NewUserAdmin() {
     const [waiting, setWaiting] = useState(false);
     const handleCreateNewUserAdmin = async (event) => {
         event.preventDefault();
+        setMessage('');
         if (password == repeatPassword) {
-            console.log('tryna create a new admin huh?');
-            console.log('collected values are', username, password, email);
-            setWaiting(true)
-            setMessage(null)
-            instance
-                .post('/signup/useradmin', { username, password, email })
-                .then((res) => {
-                    console.log('response from server', res.data);
-                    setWaiting(false);
-                    setMessage(res.data.message);
-                })
-                .catch((error) => {
-                    console.log('this is the error from the server', error);
-                    setWaiting(false);
-                })
-
+            if (email = '') {
+                setMessage('Enter An email')
+            } if (username = '') {
+                setMessage('Enter A name please')
+            } else {
+                console.log('tryna create a new admin huh?');
+                console.log('collected values are', username, password, email);
+                setWaiting(true)
+                setMessage(null)
+                instance
+                    .post('/signup/useradmin', { username, password, email })
+                    .then((res) => {
+                        console.log('response from server', res.data);
+                        setWaiting(false);
+                        setMessage(res.data.message);
+                    })
+                    .catch((error) => {
+                        console.log('this is the error from the server', error);
+                        setWaiting(false);
+                    })
+            }
 
         } if (password != repeatPassword) {
-            alert('Passwords do not match! Please make sure they do.');
+            setMessage('Passwords do not match! Please make sure they do.');
         }
 
     }
