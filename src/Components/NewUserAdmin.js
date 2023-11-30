@@ -17,7 +17,7 @@ function NewUserAdmin() {
                 setMessage('Enter An email')
             } if (username == '') {
                 setMessage('Enter A name please')
-            } else {
+            } else if(email != '' && username != '') {
                 console.log('tryna create a new admin huh?');
                 console.log('collected values are', username, password, email);
                 setWaiting(true)
