@@ -13,9 +13,9 @@ function NewUserAdmin() {
         event.preventDefault();
         setMessage('');
         if (password == repeatPassword) {
-            if (email = '') {
+            if (email == '') {
                 setMessage('Enter An email')
-            } if (username = '') {
+            } if (username == '') {
                 setMessage('Enter A name please')
             } else {
                 console.log('tryna create a new admin huh?');
