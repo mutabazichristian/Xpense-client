@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import instance from '../API';
 
 function NewUserAdmin() {
     const [username, setUsername] = useState('');

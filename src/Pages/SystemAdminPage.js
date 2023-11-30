@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import UserAdminsView from '../Components/UserAdminsView';
 import { useNavigate } from 'react-router-dom';
-import instance from '../API';
 import NewUserAdmin from '../Components/NewUserAdmin';
+import NewSystemAdmin from '../Components/NewSystemAdmin';
 
 function SystemAdminPage(props) {
     //new user admin data
@@ -45,29 +45,7 @@ function SystemAdminPage(props) {
             <h1>Create New User Admin</h1>
             <NewUserAdmin />
             <h1>Create New System Admin</h1>
-            <form onSubmit={handleCreateSystemAdmin}>
-                <table>
-                    <tr>
-                        <td><label htmlFor="">Username</label></td>
-                        <td><input type="text" name="username" onChange={e => { setUsername(e.target.value) }} /></td>
-                    </tr>
-                    <tr>
-                        <td><label htmlFor="">Email</label></td>
-                        <td><input type="text" name='email' onChange={e => { setEmail(e.target.value) }} /></td>
-                    </tr>
-                    <tr>
-                        <td><label htmlFor="">Password</label></td>
-                        <td><input type="password" name="password" onChange={e => { setPassword(e.target.value) }} /></td>
-                    </tr>
-                    <tr>
-                        <td><label htmlFor="">Repeat Password</label></td>
-                        <td><input type="password" name="repeatPassword" onChange={e => { setRepeatPassword(e.target.value) }} /></td>
-                    </tr>
-                    <tr>
-                        <button type='submit'>Create New User Admin</button>
-                    </tr>
-                </table>
-            </form>
+            <NewSystemAdmin />
         </div>
     );
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import instance from '../API/index'
 
 function NewSystemAdmin() {
     const [username, setUsername] = useState('');
@@ -45,7 +46,7 @@ function NewSystemAdmin() {
                     <td><input type="password" name="repeatPassword" onChange={e => { setRepeatPassword(e.target.value) }} /></td>
                 </tr>
                 <tr>
-                    <button type='submit'>Create New User Admin</button>
+                    <button type='submit'>Create New System Admin</button>
                 </tr>
             </table>
         </form>
