@@ -7,18 +7,23 @@ function NewUserAdmin() {
     const [password, setPassword] = useState('');
     const [repeatPassword, setRepeatPassword] = useState('');
     const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
+    const [waiting, setWaiting] = useState(false);
     const handleCreateNewUserAdmin = async (event) => {
         event.preventDefault();
         if (password == repeatPassword) {
             console.log('tryna create a new admin huh?');
             console.log('collected values are', username, password, email);
+            setWaiting(true)
             instance
                 .post('/signup/useradmin', { username, password, email })
                 .then((res) => {
                     console.log('response from server', res.data);
+                    setWaiting(false);
                 })
                 .catch((error) => {
                     console.log('this is the error from the server', error);
+                    setWaiting(false);
                 })
 
 
@@ -46,6 +51,8 @@ function NewUserAdmin() {
                     <td><label htmlFor="">Repeat Password</label></td>
                     <td><input type="password" name="repeatPassword" onChange={e => { setRepeatPassword(e.target.value) }} /></td>
                 </tr>
+                {waiting && <p style={{ color: 'black' }}> Waiting for response</p>}
+                {message && <p style={{ color: 'red' }}> {message}</p>}
                 <tr>
                     <button type='submit'>Create New User Admin</button>
                 </tr>

@@ -23,11 +23,6 @@ function SystemAdminPage(props) {
         navigate('/');
     }
 
-
-
-    const handleCreateSystemAdmin = async (event) => {
-
-    }
     return (
         <div>
             <h1>System Admin <button onClick={handleLogout}> Log Out</button></h1>
