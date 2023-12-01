@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import UserAdmins from '../Components/UserAdmins';
-import UserAdminsView from '../Components/UserAdminsView';
 import { useNavigate } from 'react-router-dom';
 import NewUserAdmin from '../Components/NewUserAdmin';
 import NewSystemAdmin from '../Components/NewSystemAdmin';
@@ -43,7 +42,7 @@ function SystemAdminPage(props) {
             <h5>User's Admin Accounts</h5>
             <ul style={{ border: "1px solid blacks" }}>
                 {
-                    userAdmins == 0 ?
+                    useradmins == 0 ?
                         <p>no User Admins Yet</p>
                         :
 
