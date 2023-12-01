@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import UserAdminsView from '../Components/UserAdminsView';
 import { useNavigate } from 'react-router-dom';
 import NewUserAdmin from '../Components/NewUserAdmin';
 import NewSystemAdmin from '../Components/NewSystemAdmin';
+import instance from '../API';
 
 function SystemAdminPage(props) {
     //new user admin data
@@ -22,7 +23,19 @@ function SystemAdminPage(props) {
         setUserType('');
         navigate('/');
     }
-
+    const getUserAdmins = async () => {
+        instance
+            .get('/useradmin')
+            .then((req, res) => {
+                console.log(res.data);
+            })
+            .catch((error) => {
+                console.log('Error form server', error);
+            })
+    }
+    useEffect(() => {
+        getUserAdmins();
+    }, [])
     return (
         <div>
             <h1>System Admin <button onClick={handleLogout}> Log Out</button></h1>

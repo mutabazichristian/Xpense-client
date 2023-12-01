@@ -24,6 +24,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.some forms{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 200px;
+}
+
 /* NAVBAR*/
 
 .navbar {
@@ -273,7 +280,8 @@ h1 {
   gap: 10px;
   color: #000000;
 }
-.expenses-viewer-filter-list2{
+
+.expenses-viewer-filter-list2 {
   width: 100%;
 }
 
