@@ -46,7 +46,7 @@ function SystemAdminPage(props) {
                         <p>no User Admins Yet</p>
                         :
 
-                        <li><UserAdminsView /></li>
+                        <li><UserAdmins useradmins={useradmins} /></li>
 
                 }
             </ul>
@@ -54,8 +54,6 @@ function SystemAdminPage(props) {
             <NewUserAdmin />
             <h1>Create New System Admin</h1>
             <NewSystemAdmin />
-            <h1>User Admins</h1>
-            <UserAdmins useradmins={useradmins} />
         </div>
     );
 }
