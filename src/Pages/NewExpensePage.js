@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import uploadImage from "../Assets/uploadIcon.svg"
 import axios from 'axios';
+import instance from "../API";
 
 
 function NewExpensePage(props) {
@@ -11,15 +12,15 @@ function NewExpensePage(props) {
     const handleSubmit = (event) => {
         event.preventDefault();
         newExpenseData = [expenseTitle, expenseAmount, expenseCategory, expenseDate, expenseImage, expenseDescription]
-        console.log('new data is',newExpenseData);
+        console.log('new data is', newExpenseData);
 
-        axios.post('/newexpense', { newExpenseData })
+        instance.post('/newexpense', { newExpenseData })
             .then(res => {
                 console.log(res);
             })
             .catch(err => console.log(err))
 
-        axios.get('/expenses')
+        instance.get('/expenses')
             .then(res => {
                 setExpenses(res.data);
             })
