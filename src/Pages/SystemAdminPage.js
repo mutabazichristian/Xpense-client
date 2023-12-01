@@ -46,7 +46,8 @@ function SystemAdminPage(props) {
                         <p>no User Admins Yet</p>
                         :
 
-                        <li><UserAdmins useradmins={useradmins} /></li>
+                        // <li><UserAdmins useradmins={useradmins} /></li>
+                        <li></li>
 
                 }
             </ul>

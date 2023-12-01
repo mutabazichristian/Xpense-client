@@ -20,6 +20,7 @@ function Navbar(props) {
         navigate('/');
     }
 
+
     return (
         <div className="navbar" >
             {/* <img src={profileImage} alt="profile" /> */}
