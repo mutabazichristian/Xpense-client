@@ -13,13 +13,13 @@ function NewExpensePage(props) {
         newExpenseData = [expenseTitle, expenseAmount, expenseCategory, expenseDate, expenseImage, expenseDescription]
         console.log('new data is',newExpenseData);
 
-        axios.post('http://localhost:8080/newexpense', { newExpenseData })
+        axios.post('/newexpense', { newExpenseData })
             .then(res => {
                 console.log(res);
             })
             .catch(err => console.log(err))
 
-        axios.post('http://localhost:8080/expenses')
+        axios.get('/expenses')
             .then(res => {
                 setExpenses(res.data);
             })

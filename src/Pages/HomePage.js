@@ -7,7 +7,7 @@ import StatisticsPage from '../Pages/StatisticsPage';
 import FeedbackPage from '../Pages/FeedbackPage';
 
 const HomePage = (props) => {
-    const [expenseTitle, setExpenseTitle] = useState('untitled');
+    const [expenseTitle, setExpenseTitle] = useState('');
     const [expenseAmount, setExpenseAmount] = useState(0);
     const [expenseCategory, setExpenseCategory] = useState('');
     const [expenseDate, setExpenseDate] = useState('');

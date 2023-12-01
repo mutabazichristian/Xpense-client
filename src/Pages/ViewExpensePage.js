@@ -11,7 +11,7 @@ function ViewExpenses(props) {
 
     const refreshExpenses = () => {
         console.log('refresh expenses');
-        instance    .get('http://localhost:8080/expenses')
+        instance    .get('/expenses')
             .then(res => {
                 if (res.data != []) {
                     setExpenses(res.data)
@@ -24,7 +24,7 @@ function ViewExpenses(props) {
     }
     const deleteHandler = (id) => {
         console.log('Id for deletion', id);
-        axios.delete('http://localhost:8080/expenses', { id })
+        axios.delete('/expenses', { id })
             .then(res => {
                 console.log(res);
                 //refresh the expenses list
