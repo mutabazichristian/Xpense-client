@@ -6,11 +6,10 @@ function UserAdmins(props) {
         <ul>
             {useradmins.map((user, index) => (
                 <li key={index}>
-                    {/* Display the username property */}
-                    Username: {user.username}
-                    {/* You can add more properties if needed */}
-                    {/* Admin Password: {user.adminPassword} */}
-                    {/* Created At: {user.createdAt} */}
+                    {/* Display the username, adminPassword, and email properties */}
+                    Username: {user.username} <br />
+                    Admin Password: {user.adminPassword} <br />
+                    Email: {user.email}
                 </li>
             ))}
         </ul>
