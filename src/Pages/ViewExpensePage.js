@@ -10,6 +10,7 @@ function ViewExpenses(props) {
         expenseDescription, setExpenseDescription, expenses, setExpenses } = props;
 
     const refreshExpenses = () => {
+        console.log('refresh expenses');
         instance    .get('http://localhost:8080/expenses')
             .then(res => {
                 if (res.data != []) {
