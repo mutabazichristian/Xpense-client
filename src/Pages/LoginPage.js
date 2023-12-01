@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import instance from "../API";
 import { useNavigate } from "react-router-dom";
-import { wait } from "@testing-library/user-event/dist/utils";
 
 function Login(props) {
     const navigate = useNavigate();

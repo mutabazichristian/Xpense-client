@@ -11,7 +11,7 @@ function ViewExpenses(props) {
     const refreshExpenses = async () => {
         console.log('refresh expenses');
         await instance
-            .get('/expenses')
+            .get('/expenses',{})
             .then(res => {
                 if (res.data != []) {
                     setExpenses(res.data)
