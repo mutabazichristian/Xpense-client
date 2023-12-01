@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import UserAdmins from '../Components/UserAdmins';
 import UserAdminsView from '../Components/UserAdminsView';
 import { useNavigate } from 'react-router-dom';
 import NewUserAdmin from '../Components/NewUserAdmin';
@@ -10,8 +11,6 @@ function SystemAdminPage(props) {
     //new user admin data
     const { setUserType } = props;
     const navigate = useNavigate();
-    var userAdmins = [];
-    console.log(userAdmins.length)
 
     const handleLogout = () => {
         console.log('this is handle log out running')
@@ -56,6 +55,8 @@ function SystemAdminPage(props) {
             <NewUserAdmin />
             <h1>Create New System Admin</h1>
             <NewSystemAdmin />
+            <h1>User Admins</h1>
+            <UserAdmins useradmins={useradmins} />
         </div>
     );
 }
