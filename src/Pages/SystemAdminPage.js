@@ -27,7 +27,7 @@ function SystemAdminPage(props) {
         instance
             .get('/useradmin')
             .then(res => {
-                console.log(res.data);
+                console.log(res.data.systemadmins);
             })
             .catch((error) => {
                 console.log('Error form server', error);
