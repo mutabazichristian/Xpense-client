@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ExpensesViewer from "../Components/ExpensesViewer";
 import searchIcon from "../Assets/icon-search.svg"
-import axios from "axios";
 import instance from "../API/index";
 
 function ViewExpenses(props) {
@@ -9,9 +8,10 @@ function ViewExpenses(props) {
         setExpenseTitle, setExpenseAmount, setExpenseCategory, setExpenseDate, setExpenseImage,
         expenseDescription, setExpenseDescription, expenses, setExpenses } = props;
 
-    const refreshExpenses = () => {
+    const refreshExpenses = async () => {
         console.log('refresh expenses');
-        instance    .get('/expenses')
+        await instance
+            .get('/expenses')
             .then(res => {
                 if (res.data != []) {
                     setExpenses(res.data)
@@ -22,9 +22,9 @@ function ViewExpenses(props) {
             .catch(err => console.log(err))
 
     }
-    const deleteHandler = (id) => {
+    const deleteHandler = async (id) => {
         console.log('Id for deletion', id);
-        axios.delete('/expenses', { id })
+        await instance.delete('/expenses', { id })
             .then(res => {
                 console.log(res);
                 //refresh the expenses list

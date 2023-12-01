@@ -20,7 +20,7 @@ function NewExpensePage(props) {
             })
             .catch(err => console.log(err))
 
-        instance.get('/expenses')
+        instance    .get('/expenses')
             .then(res => {
                 setExpenses(res.data);
             })
