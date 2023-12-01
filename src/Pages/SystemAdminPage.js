@@ -26,7 +26,7 @@ function SystemAdminPage(props) {
     const getUserAdmins = async () => {
         instance
             .get('/useradmin')
-            .then((req, res) => {
+            .then(res => {
                 console.log(res.data);
             })
             .catch((error) => {
