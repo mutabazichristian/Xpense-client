@@ -6,6 +6,7 @@ import NewSystemAdmin from '../Components/NewSystemAdmin';
 import instance from '../API';
 
 function SystemAdminPage(props) {
+    const [useradmins, setUseradmins] = useState([]);
     //new user admin data
     const { setUserType } = props;
     const navigate = useNavigate();
@@ -27,7 +28,8 @@ function SystemAdminPage(props) {
         instance
             .get('/useradmin')
             .then(res => {
-                console.log(res.data.systemadmins);
+                console.log(res.data);
+                setUseradmins(res.data)
             })
             .catch((error) => {
                 console.log('Error form server', error);
